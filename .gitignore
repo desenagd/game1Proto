@@ -1,0 +1,13 @@
+# Godot 4+
+.godot/
+
+# Godot 3 (if applicable)
+.import/
+.export/
+
+# Exported builds
+export/
+
+# OS junk
+.DS_Store
+Thumbs.db
