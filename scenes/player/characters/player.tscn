@@ -1,3 +1,27 @@
 [gd_scene format=3 uid="uid://c5lqnvcvxj4gp"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scfgj"]
+radius = 7.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4egs4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gjwgp"]
+radius = 23.0
+
 [node name="Player" type="Node2D" unique_id=35372436]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944624643]
+shape = SubResource("CapsuleShape2D_scfgj")
+debug_color = Color(0, 0.5936799, 0.73684317, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1675897128]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=585604580]
+shape = SubResource("CapsuleShape2D_4egs4")
+debug_color = Color(0.41000396, 0, 0.009936786, 0.41960785)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1884488479]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=194915166]
+shape = SubResource("CircleShape2D_gjwgp")
+debug_color = Color(0.17122999, 0.380984, 0, 0.41960785)
