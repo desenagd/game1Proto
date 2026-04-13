@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dfonj72f6n3ra"]
+
+[ext_resource type="Script" uid="uid://bbal53j2ufiaf" path="res://scripts/abilities/skill_shot/skill_shot_projectile.gd" id="1_if3df"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjvpr"]
+radius = 22.0
+
+[node name="SkillShot" type="Area2D" unique_id=1167420291]
+script = ExtResource("1_if3df")
+
+[node name="Area2D" type="CollisionShape2D" parent="." unique_id=1378861383]
+shape = SubResource("CircleShape2D_qjvpr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1382829429]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=782335471]

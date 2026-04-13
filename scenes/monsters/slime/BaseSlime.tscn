@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://clyr2864uv6nu"]
+
+[ext_resource type="Texture2D" uid="uid://bhi082ru78a5f" path="res://assets/sprites/mobs/Slime/BaseSlime/Slime_SpriteSheet.png" id="1_gqon8"]
+[ext_resource type="Script" uid="uid://bhrsnml72k2vm" path="res://scripts/monsters/slime/BaseSlime/base_slime.gd" id="1_rh8l3"]
+[ext_resource type="PackedScene" uid="uid://bbbkwm5xwyagj" path="res://scenes/ui/health_bar/health_bar.tscn" id="3_8qqpv"]
+[ext_resource type="PackedScene" uid="uid://dm17ydpsi5bq6" path="res://scripts/entity/ai_controller.tscn" id="4_750o0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rh8l3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qqpv"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7axhc"]
+radius = 15.524175
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_750o0"]
+radius = 582.10394
+
+[node name="Slime" type="CharacterBody2D" unique_id=336087669]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_rh8l3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1966578863]
+shape = SubResource("CircleShape2D_rh8l3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1588051760]
+texture = ExtResource("1_gqon8")
+offset = Vector2(1, 0)
+region_enabled = true
+region_rect = Rect2(128, 70.864365, 32, 24.377548)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1515122436]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1855085688]
+shape = SubResource("CircleShape2D_8qqpv")
+debug_color = Color(0.62507915, 0, 0.025667263, 0.41960785)
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1768491230]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=388063317]
+shape = SubResource("CircleShape2D_7axhc")
+
+[node name="VisionRange" type="Area2D" parent="." unique_id=158984469]
+unique_name_in_owner = true
+
+[node name="vision" type="CollisionShape2D" parent="VisionRange" unique_id=1331672503]
+shape = SubResource("CircleShape2D_750o0")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="health_bar" parent="." unique_id=594100622 instance=ExtResource("3_8qqpv")]
+unique_name_in_owner = true
+
+[node name="ai_controller" parent="." unique_id=764099867 instance=ExtResource("4_750o0")]

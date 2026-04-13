@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://clwjqvjf33d82"]
+
+[ext_resource type="Script" uid="uid://o3u4doh5vh1y" path="res://scripts/abilities/slime_melee/slime_melee.gd" id="1_yior0"]
+
+[node name="slime_melee" type="Node2D" unique_id=754916499]
+script = ExtResource("1_yior0")

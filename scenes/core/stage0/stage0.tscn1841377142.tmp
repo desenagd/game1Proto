@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ob36kvqe81rx"]
+
+[ext_resource type="Texture2D" uid="uid://cwhwo4iftmci7" path="res://assets/world/stage0/CheckerBase.png" id="1_yktdf"]
+[ext_resource type="PackedScene" uid="uid://dr3jqni0rnxth" path="res://scenes/player/characters/bucky/Bucky.tscn" id="2_51b0v"]
+[ext_resource type="PackedScene" uid="uid://clyr2864uv6nu" path="res://scenes/monsters/slime/BaseSlime.tscn" id="3_51b0v"]
+
+[node name="Node2D" type="Node2D" unique_id=1414036859]
+
+[node name="background TL" type="Sprite2D" parent="." unique_id=1150665422]
+position = Vector2(-640, -359)
+texture = ExtResource("1_yktdf")
+
+[node name="background TR" type="Sprite2D" parent="." unique_id=2098562042]
+position = Vector2(640, -360)
+texture = ExtResource("1_yktdf")
+
+[node name="background BL" type="Sprite2D" parent="." unique_id=1770060351]
+position = Vector2(-640, 360)
+texture = ExtResource("1_yktdf")
+
+[node name="background BR" type="Sprite2D" parent="." unique_id=519924661]
+position = Vector2(640, 360)
+texture = ExtResource("1_yktdf")
+
+[node name="Bucky" parent="." unique_id=1389102496 instance=ExtResource("2_51b0v")]
+
+[node name="Slime" parent="." unique_id=336087669 instance=ExtResource("3_51b0v")]
+position = Vector2(491, 176)

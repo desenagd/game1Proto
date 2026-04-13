@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bfbc7ivjx57q7"]
+
+[ext_resource type="PackedScene" uid="uid://dfonj72f6n3ra" path="res://scenes/abilities/skill_shot/skill_shot_projectile.tscn" id="1_t7nuj"]
+[ext_resource type="Script" uid="uid://rkq3kvbfp1mc" path="res://scripts/abilities/rocket_punch/rocket_punch_projectile.gd" id="2_dxo1p"]
+[ext_resource type="Texture2D" uid="uid://dif0aoxk4guay" path="res://assets/abilities/rocket_punch/RocketPunch.png" id="3_dxo1p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dxo1p"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxo1p"]
+atlas = ExtResource("3_dxo1p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txgw8"]
+atlas = ExtResource("3_dxo1p")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jam0j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxo1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txgw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="RocketPunch" unique_id=1167420291 instance=ExtResource("1_t7nuj")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_dxo1p")
+
+[node name="Area2D" parent="." index="0" unique_id=1378861383]
+shape = SubResource("CircleShape2D_dxo1p")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=1382829429]
+position = Vector2(-1, 0)
+rect = Rect2(-4, -5, 10, 11)
+
+[node name="AnimatedSprite2D" parent="." index="2" unique_id=782335471]
+position = Vector2(-7, -1)
+sprite_frames = SubResource("SpriteFrames_jam0j")
+frame_progress = 0.6478798
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

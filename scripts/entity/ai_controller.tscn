@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dm17ydpsi5bq6"]
+
+[ext_resource type="Script" uid="uid://g1nn5vv7eome" path="res://scripts/entity/ai_controller.gd" id="1_x0ewe"]
+
+[node name="ai_controller" type="Node2D" unique_id=764099867]
+script = ExtResource("1_x0ewe")

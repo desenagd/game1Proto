@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://doue64bb0a4a6"]
+
+[ext_resource type="Script" uid="uid://cgtlnmfefsyak" path="res://scripts/abilities/rocket_punch/rocket_punch.gd" id="1_1nj81"]
+
+[node name="Node" type="Node" unique_id=1138869655]
+script = ExtResource("1_1nj81")

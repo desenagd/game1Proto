@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bbbkwm5xwyagj"]
+
+[ext_resource type="Script" uid="uid://d0v02qt0ts12o" path="res://scripts/ui/health_bar/health_bar.gd" id="1_ruhgv"]
+
+[node name="health_bar" type="Node2D" unique_id=594100622]
+script = ExtResource("1_ruhgv")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1203166937]
+offset_left = -17.0
+offset_top = -4.0
+offset_right = 18.0
+offset_bottom = 7.0
+theme_override_colors/font_color = Color(0.08846267, 0.3503975, 0, 1)
+fill_mode = 1
+show_percentage = false
