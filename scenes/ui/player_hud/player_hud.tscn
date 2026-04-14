@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b6hbg0eequgyu"]
+
+[ext_resource type="Script" uid="uid://cd3wvneuifg2n" path="res://scripts/ui/player_hud/player_hud.gd" id="1_saegx"]
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=102203020]
+script = ExtResource("1_saegx")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1644996923]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1337274532]
+layout_mode = 2
+
+[node name="StatsColumn" type="VBoxContainer" parent="Panel/VBox" unique_id=164641607]
+layout_mode = 2
+
+[node name="HPRow" type="HBoxContainer" parent="Panel/VBox/StatsColumn" unique_id=1119456139]
+layout_mode = 2
+
+[node name="HPIcon" type="Label" parent="Panel/VBox/StatsColumn/HPRow" unique_id=1278886989]
+layout_mode = 2
+
+[node name="HPBar" type="TextureProgressBar" parent="Panel/VBox/StatsColumn/HPRow" unique_id=1440823798]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="Panel/VBox/StatsColumn/HPRow" unique_id=1401654077]
+layout_mode = 2
+
+[node name="ManaRow" type="HBoxContainer" parent="Panel/VBox/StatsColumn" unique_id=720131304]
+layout_mode = 2
+
+[node name="ManaIcon" type="Label" parent="Panel/VBox/StatsColumn/ManaRow" unique_id=1395120288]
+layout_mode = 2
+
+[node name="ManaBar" type="TextureProgressBar" parent="Panel/VBox/StatsColumn/ManaRow" unique_id=483255661]
+layout_mode = 2
+
+[node name="ManaLabel" type="Label" parent="Panel/VBox/StatsColumn/ManaRow" unique_id=2057317509]
+layout_mode = 2
+
+[node name="MiscRow" type="HBoxContainer" parent="Panel/VBox/StatsColumn" unique_id=1559697227]
+layout_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="Panel/VBox/StatsColumn/MiscRow" unique_id=2092912899]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="Panel/VBox/StatsColumn/MiscRow" unique_id=1172873050]
+layout_mode = 2
+
+[node name="AbilitiesRow" type="HBoxContainer" parent="Panel/VBox" unique_id=1259088496]
+layout_mode = 2

@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://ob36kvqe81rx"]
 
+[ext_resource type="Script" uid="uid://bg8t1muj78dop" path="res://scripts/core/stage_0/stage_0.gd" id="1_r8boy"]
 [ext_resource type="Texture2D" uid="uid://cwhwo4iftmci7" path="res://assets/world/stage0/CheckerBase.png" id="1_yktdf"]
 [ext_resource type="PackedScene" uid="uid://dr3jqni0rnxth" path="res://scenes/player/characters/bucky/Bucky.tscn" id="2_51b0v"]
-[ext_resource type="PackedScene" uid="uid://clyr2864uv6nu" path="res://scenes/monsters/slime/BaseSlime.tscn" id="3_51b0v"]
+[ext_resource type="PackedScene" uid="uid://dos1ltv3auaqg" path="res://scenes/spawners/slime_spawner/slime_spawner.tscn" id="3_51b0v"]
+[ext_resource type="PackedScene" uid="uid://b6hbg0eequgyu" path="res://scenes/ui/player_hud/player_hud.tscn" id="4_cfff0"]
+[ext_resource type="PackedScene" uid="uid://bfox14gkhoeng" path="res://scenes/spawners/orb_spawner/orb_spawner.tscn" id="6_7288t"]
 
 [node name="Stage 0" type="Node2D" unique_id=1414036859]
+script = ExtResource("1_r8boy")
 
 [node name="background TL" type="Sprite2D" parent="." unique_id=1150665422]
 position = Vector2(-640, -359)
@@ -24,5 +28,8 @@ texture = ExtResource("1_yktdf")
 
 [node name="Bucky" parent="." unique_id=1389102496 instance=ExtResource("2_51b0v")]
 
-[node name="Slime" parent="." unique_id=336087669 instance=ExtResource("3_51b0v")]
-position = Vector2(491, 176)
+[node name="slime_spawner" parent="." unique_id=1213560847 instance=ExtResource("3_51b0v")]
+
+[node name="PlayerHUD" parent="." unique_id=102203020 instance=ExtResource("4_cfff0")]
+
+[node name="OrbSpawner" parent="." unique_id=1524798475 instance=ExtResource("6_7288t")]

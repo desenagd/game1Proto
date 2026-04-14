@@ -273,6 +273,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_1qhtf"]
 resource_name = "walk_down"
 length = 1.0000083
+loop_mode = 1
 step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -549,17 +550,35 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"isWalking"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j4j20"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"isWalking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s2kl0"]
+advance_mode = 2
+advance_condition = &"ability_2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qhtf"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xruq4"]
+advance_mode = 2
+advance_condition = &"ability_2"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tbumo"]
 states/Start/position = Vector2(77, 81)
 states/ability_1/node = SubResource("AnimationNodeBlendSpace2D_tbumo")
-states/ability_1/position = Vector2(259, 200)
+states/ability_1/position = Vector2(136, 194)
 states/ability_2/node = SubResource("AnimationNodeBlendSpace2D_erobl")
-states/ability_2/position = Vector2(512, 205)
+states/ability_2/position = Vector2(416, 201)
 states/idle/node = SubResource("AnimationNodeAnimation_hfx7g")
 states/idle/position = Vector2(306, 81)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_o78lu")
 states/walk/position = Vector2(546, 81)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4mggr"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_kb55k"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_38ss1"), "idle", "ability_1", SubResource("AnimationNodeStateMachineTransition_kxek7"), "walk", "ability_1", SubResource("AnimationNodeStateMachineTransition_47oig"), "ability_1", "idle", SubResource("AnimationNodeStateMachineTransition_csgyp"), "ability_1", "walk", SubResource("AnimationNodeStateMachineTransition_hfx7g")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4mggr"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_kb55k"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_38ss1"), "idle", "ability_1", SubResource("AnimationNodeStateMachineTransition_kxek7"), "walk", "ability_1", SubResource("AnimationNodeStateMachineTransition_47oig"), "ability_1", "idle", SubResource("AnimationNodeStateMachineTransition_csgyp"), "ability_1", "walk", SubResource("AnimationNodeStateMachineTransition_hfx7g"), "ability_2", "walk", SubResource("AnimationNodeStateMachineTransition_j4j20"), "walk", "ability_2", SubResource("AnimationNodeStateMachineTransition_s2kl0"), "ability_2", "idle", SubResource("AnimationNodeStateMachineTransition_1qhtf"), "idle", "ability_2", SubResource("AnimationNodeStateMachineTransition_xruq4")]
 
 [node name="Bucky" type="CharacterBody2D" unique_id=1389102496 groups=["player"]]
 motion_mode = 1
@@ -595,6 +614,7 @@ libraries/ = SubResource("AnimationLibrary_kb55k")
 tree_root = SubResource("AnimationNodeStateMachine_tbumo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/ability_1 = false
+parameters/conditions/ability_2 = false
 parameters/conditions/isIdle = false
 parameters/conditions/isWalking = false
 parameters/ability_1/blend_position = Vector2(0, 0)

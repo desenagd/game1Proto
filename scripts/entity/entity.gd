@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 class_name Entity
 
 var direction : Vector2 = Vector2()
@@ -13,7 +12,7 @@ var max_mana : int = 100
 var current_mana : int = 100
 var mana_regen : int = 5
 
-var max_speed : float = 250 #was 600
+var max_speed : float = 10000 #was 600
 var current_speed : float = 250
 var acceleration : float = 4
 
@@ -24,32 +23,28 @@ var is_busy : bool = false
 var last_ability : int = 0
 
 var _regen_timer : float = 0.0
-const REGEN_INTERVAL : float = 60.0
+const REGEN_INTERVAL : float = 1.0
 
 var abilities : Array[Node] = []
 
+signal died( position : Vector2 )
+
 func regen_health():
-	if (current_health < max_health):
-		if( current_health + health_regen) > max_health:
-			current_health = max_health
-		else:
-			current_health += health_regen
+	current_health = min( current_health + health_regen, max_health)
+	#sprint("regen tick — health: ", current_health, " / ", max_health)
 			
 func regen_mana():
-	if (current_mana < max_mana):
-		if( current_mana + mana_regen) > max_mana:
-			current_mana = max_mana
-		else:
-			current_mana += mana_regen
+	current_mana = min(current_mana + mana_regen, max_mana)
 			
 func modify_mana( amount ):
 	var new_mana = current_mana + amount
-	if( new_mana < 0):
+	if new_mana < 0:
 		current_mana = 0
-	if( new_mana > max_mana):
+	elif new_mana > max_mana:
 		current_mana = max_mana
 	else:
-		current_mana += amount
+		current_mana = new_mana
+	
 		
 func apply_damage(amount) -> void:
 	if armor > 0:
@@ -60,6 +55,7 @@ func apply_damage(amount) -> void:
 		die()
 
 func die() -> void:
+	died.emit( global_position )
 	queue_free()  # removes the node from the scene
 		
 func _physics_process(delta: float) -> void:
@@ -71,10 +67,10 @@ func _physics_process(delta: float) -> void:
 		
 func load_ability( ability_name : String ) -> Node:
 	var path = "res://scenes/abilities/" + ability_name + "/" + ability_name + ".tscn"
-	print("Attempting to load: ", path)
+	#print("Attempting to load: ", path)
 	var scene = load(path)
 	if(scene == null):
-		print( "FAILD to load ability: ", path)
+		#print( "FAILD to load ability: ", path)
 		return null
 	
 	#var scene = load("res://scenes/abilities/" + ability_name + "/" + ability_name + ".tscn")
@@ -83,5 +79,3 @@ func load_ability( ability_name : String ) -> Node:
 	add_child(sceneNode)
 	abilities.append(sceneNode)
 	return sceneNode
-	
-	

@@ -9,7 +9,7 @@ func _ready() -> void:
 	max_health = 150
 	current_health = 150
 	max_mana = 150
-	health_regen = 12
+	health_regen = 5
 	mana_regen = 5
 	armor = 10
 	current_speed = 312
@@ -18,6 +18,7 @@ func _ready() -> void:
 	_animation_tree.active = true
 	load_ability("light_punch")
 	load_ability("rocket_punch")
+	load_ability("tumble")
 
 func _physics_process(delta) -> void:
 	super(delta)

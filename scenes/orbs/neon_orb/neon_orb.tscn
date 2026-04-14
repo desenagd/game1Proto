@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://28o0omy5ky5a"]
+
+[ext_resource type="PackedScene" uid="uid://bxrkc3epde6gk" path="res://scenes/orbs/base_orb/base_orb.tscn" id="1_dfd8r"]
+[ext_resource type="Script" uid="uid://b7sh7ts7j0ky6" path="res://scripts/orbs/neon_orb/neon_orb.gd" id="2_ucg6i"]
+[ext_resource type="Texture2D" uid="uid://bqtyj2xqbtlg6" path="res://assets/sprites/items/prismatic_orb/PrismaticOrb.png" id="3_prd6d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5joaq"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he1jd"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rierk"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l34qa"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0pvi"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtym4"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aj5a8"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnk6b"]
+atlas = ExtResource("3_prd6d")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_712ak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5joaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he1jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rierk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l34qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0pvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtym4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aj5a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnk6b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="NeonOrb" unique_id=1773454107 instance=ExtResource("1_dfd8r")]
+script = ExtResource("2_ucg6i")
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=718991551]
+position = Vector2(0, -2)
+scale = Vector2(1.125, 1.0312499)
+sprite_frames = SubResource("SpriteFrames_712ak")
+animation = &"idle"
+frame_progress = 0.57666254

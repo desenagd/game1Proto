@@ -1,8 +1,8 @@
 extends Ability
-class_name SlimeMelee
+class_name PointAndClick
 
-var damage : int = 10
-var reach : float = 60.0
+var damage : int = 3
+var reach : float = 100.0
 
 func _execute(mouse_pos : Vector2) -> void:
 	var direction = (mouse_pos - caster.global_position).normalized()
@@ -11,8 +11,12 @@ func _execute(mouse_pos : Vector2) -> void:
 		caster.global_position,
 		caster.global_position + direction * reach
 	)
-	query.exclude = [caster]
+	
 	var result = space.intersect_ray(query)
 	if result and result.collider.has_method("apply_damage"):
 		result.collider.apply_damage(damage)
-		#print(caster.name, " hit ", result.collider.name, " for ", damage)
+		_on_hit( result.collider )
+		
+func _on_hit( target ):
+	pass
+		

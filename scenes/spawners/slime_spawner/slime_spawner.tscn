@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dos1ltv3auaqg"]
+
+[ext_resource type="PackedScene" uid="uid://biq0ogv17qktk" path="res://scenes/spawners/base_spawner/base_spawner.tscn" id="1_hb0ui"]
+[ext_resource type="Script" uid="uid://beylyo1x27req" path="res://scripts/spawners/slime_spawner/slime_spawner.gd" id="2_1shoh"]
+[ext_resource type="PackedScene" uid="uid://clyr2864uv6nu" path="res://scenes/monsters/slime/BaseSlime.tscn" id="3_grh5y"]
+[ext_resource type="PackedScene" uid="uid://bfox14gkhoeng" path="res://scenes/spawners/orb_spawner/orb_spawner.tscn" id="4_u7q7m"]
+
+[node name="slime_spawner" unique_id=1213560847 node_paths=PackedStringArray("orb_spawner") instance=ExtResource("1_hb0ui")]
+script = ExtResource("2_1shoh")
+mob_scenes = Array[PackedScene]([ExtResource("3_grh5y")])
+orb_spawner = NodePath("orb_spawner")
+
+[node name="orb_spawner" parent="." index="0" unique_id=1524798475 instance=ExtResource("4_u7q7m")]

@@ -13,15 +13,24 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	
 	if not entity:
-		#print("entity is null!")
 		return
 		
-	entity.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	if entity.direction:
-		entity.velocity = entity.direction * entity.current_speed
-	else:
-		entity.velocity = Vector2.ZERO
+	var is_dashing = false
+	for ability in entity.abilities:
+		if ability is Dash and ability._is_dashing:
+			is_dashing = true
+			break
+	#print("is_dashing: ", is_dashing)
+		
+	if not is_dashing:
+		entity.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		if entity.direction:
+			entity.velocity = entity.direction * entity.current_speed
+		else:
+			entity.velocity = Vector2.ZERO
+		
 	entity.move_and_slide()
+	
 	_update_animation_parameters(entity)
 	
 	#========= ABILITY HANDLING ==============#

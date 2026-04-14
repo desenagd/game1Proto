@@ -13,7 +13,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	var index = caster.abilities.find(self)
 	animation_name = "ability_" + str(index + 1)
-	print("ability slot assigned: ", animation_name)
+	#print("ability slot assigned: ", animation_name)
 
 func _physics_process(delta: float) -> void:
 	if not is_ready:
@@ -30,10 +30,10 @@ func _physics_process(delta: float) -> void:
 		
 func activate( mouse_pos : Vector2 ) -> void:
 	if not is_ready:
-		print("Ability is not ready yet!")
+		#print("Ability is not ready yet!")
 		return
 	if caster.current_mana < mana_cost:
-		print("Not Enough Mana!")
+		#print("Not Enough Mana!")
 		return
 		
 	caster.modify_mana( -mana_cost )
@@ -61,7 +61,7 @@ func _play_animation() -> void:
 			anim_tree[condition_path] = true
 		
 			await caster.get_tree().create_timer(0.5).timeout
-			print("resetting condition")
+			#print("resetting condition")
 			anim_tree[condition_path] = false
 		
 func _execute( mouse_pos : Vector2 ) -> void:

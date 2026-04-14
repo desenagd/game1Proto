@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bxrkc3epde6gk"]
+
+[ext_resource type="Script" uid="uid://k0gl2riatrl7" path="res://scripts/orbs/base_orb/base_orb.gd" id="1_84xb6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_84xb6"]
+
+[node name="orb" type="Area2D" unique_id=1773454107]
+script = ExtResource("1_84xb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1611009385]
+shape = SubResource("CircleShape2D_84xb6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=718991551]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1340478847]

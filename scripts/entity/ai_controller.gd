@@ -3,7 +3,7 @@ class_name AiController
 
 var entity : Entity
 var target : Entity
-var detection_radius : float = 200.0
+var detection_radius : float = 600.0
 var attack_radius : float = 50.0
 
 func _physics_process(delta) -> void:

@@ -3,9 +3,10 @@ extends Entity
 @onready var _health_bar : HealthBar = $health_bar
 
 func _ready() -> void:
-	max_health = 100
-	current_health = 100
+	max_health = 1
+	current_health = 1
 	current_speed = 100
+	health_regen = 0
 	armor = 0
 	
 	_health_bar.update(current_health, max_health)

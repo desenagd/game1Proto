@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpvf5xnws0uy4"]
+
+[ext_resource type="Script" uid="uid://k8f0bf4yiwsp" path="res://scripts/abilities/point_and_click/point_and_click.gd" id="1_eofob"]
+
+[node name="point_and_click" type="Node2D" unique_id=781758846]
+script = ExtResource("1_eofob")

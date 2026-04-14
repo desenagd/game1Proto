@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bw8ny8u5l53x2"]
+
+[ext_resource type="PackedScene" uid="uid://32an7e0m03iq" path="res://scenes/abilities/dash/dash.tscn" id="1_yfhxe"]
+[ext_resource type="Script" uid="uid://2t04tuwyvw1t" path="res://scripts/abilities/tumble/tumble.gd" id="2_serm8"]
+
+[node name="Node2D" unique_id=1130531603 instance=ExtResource("1_yfhxe")]
+script = ExtResource("2_serm8")
