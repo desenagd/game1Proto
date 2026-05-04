@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cd3wlgodl5n0f"]
+
+[ext_resource type="Script" uid="uid://37cst4xbmbst" path="res://scripts/core/main_menu/main_menu.gd" id="1_b7cvl"]
+
+[node name="MainMenu" type="Control" unique_id=1362011546]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7cvl")
+
+[node name="backroundRect" type="ColorRect" parent="." unique_id=1128495854]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1727.0
+offset_top = -887.0
+offset_right = 1727.0
+offset_bottom = 887.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08846267, 0.3503975, 0, 1)
+
+[node name="logoRect" type="ColorRect" parent="." unique_id=563384459]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -329.5
+offset_top = 64.0
+offset_right = 329.5
+offset_bottom = 262.0
+grow_horizontal = 2
+color = Color(0.101960786, 0.29411766, 0.54509807, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1347690302]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -50.5
+offset_right = 37.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=780256783]
+layout_mode = 2
+
+[node name="NewRunButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1014785970]
+layout_mode = 2
+text = "NewRun"
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=394252320]
+layout_mode = 2
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1587123266]
+layout_mode = 2
+text = "Exit"

@@ -3,7 +3,7 @@ class_name Orb
 
 var stat_bonus : int = 5
 var despawn_time : float = 120.0
-var spawn_weight : float = 1.0 
+var spawn_weight : float = 1.0
 
 func _ready() -> void:
 	body_entered.connect( _on_body_entered )

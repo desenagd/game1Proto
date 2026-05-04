@@ -1,4 +1,5 @@
 extends Node2D
+
 class_name Spawner
 
 @export var mob_scenes : Array[PackedScene] = []
@@ -8,6 +9,21 @@ class_name Spawner
 @export var max_spawn_distance : float = 600.0
 @export var max_place_attempts : int = 10
 @export var orb_spawner : OrbSpawner = null
+@export var entity_layer : Node2D = null
+
+@export var randomize_stats : bool = true
+
+var mob_min : int = 5
+var mob_max : int = 75
+
+var interval_min : float = 0.5
+var interval_max : float = 5.0
+
+var min_dist_min : float = 200.0
+var min_dist_max : float = 400.0
+
+var place_attempts_min = 5
+var place_attempts_max = 20
 
 var _timer : float = 0.0
 var _active_mobs : Array[Node] = []
@@ -15,6 +31,8 @@ var _player : Entity = null
 
 #=========== LIFECYCLE ================
 func _ready() -> void:
+	if randomize_stats:
+		_randomize_stats()
 	_find_player()
 	on_ready()
 	
@@ -29,7 +47,20 @@ func _physics_process( delta: float ) -> void:
 	if _timer >= spawn_interval:
 		_timer -= spawn_interval
 		_try_spawn()
-		
+
+func _randomize_stats() -> void:
+	spawn_interval = randf_range(interval_min, interval_max)
+	max_mobs = randi_range(mob_min, mob_max)
+	min_spawn_distance = randf_range(min_dist_min, min_dist_max)
+	max_spawn_distance = randf_range(min_spawn_distance + 100.0, min_dist_max + 400.0)
+	max_place_attempts = randi_range(place_attempts_min, place_attempts_max)
+	
+	print( "spawn_interval: " + str(spawn_interval) )
+	print( "max_mobs: " + str(max_mobs) )
+	print( "min_spawn_distance: " + str(min_spawn_distance) )
+	print( "max_spawn_distance: " + str(max_spawn_distance) )
+	print( "max_place_attempts: " + str(max_place_attempts) )
+
 #=========== CORE SPAWN LOGIC ================
 func _try_spawn() -> void:
 	if _active_mobs.size() >= max_mobs:
@@ -48,7 +79,10 @@ func _try_spawn() -> void:
 		return
 		
 	var mob : Node = scene.instantiate()
-	get_parent().add_child( mob )
+	var target = entity_layer if entity_layer != null else get_parent()
+	target.add_child( mob )
+	
+	#get_parent().add_child( mob )
 	mob.global_position = pos
 	_active_mobs.append( mob )
 	on_mob_spawned( mob )

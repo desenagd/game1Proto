@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://teegnbllejel"]
+
+[ext_resource type="Script" uid="uid://wk0rwh7yw0ow" path="res://scripts/core/stage_1/stage_1.gd" id="1_27krv"]
+[ext_resource type="Texture2D" uid="uid://8twreki12quq" path="res://assets/world/stage1/HydroElectricMap_Base.png" id="2_6ah5d"]
+[ext_resource type="PackedScene" uid="uid://c5pr2i8kxosr1" path="res://scenes/environment/stage_1/tree.tscn" id="3_mmq3r"]
+[ext_resource type="PackedScene" uid="uid://dyhxu6bw4o6y7" path="res://scenes/environment/stage_1/large_rock.tscn" id="4_m65o7"]
+[ext_resource type="PackedScene" uid="uid://cmjfa468ysk8q" path="res://scenes/environment/stage_1/medium_rock.tscn" id="5_hruy2"]
+[ext_resource type="PackedScene" uid="uid://ca0iwpftdtw64" path="res://scenes/environment/stage_1/small_rock.tscn" id="6_6cpta"]
+[ext_resource type="PackedScene" uid="uid://dos1ltv3auaqg" path="res://scenes/spawners/slime_spawner/slime_spawner.tscn" id="7_6ah5d"]
+
+[sub_resource type="Curve2D" id="Curve2D_wro7i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -43, -357, 0, 0, 0, 0, -43, -281, 0, 0, 0, 0, -53, -217, 0, 0, 0, 0, -83, -180, 0, 0, 0, 0, -186, -116, 0, 0, 0, 0, -226, -44, 0, 0, 0, 0, -217, 33, 0, 0, 0, 0, -190, 65, 0, 0, 0, 0, -51, 78, 0, 0, 0, 0, 65, 57, 0, 0, 0, 0, 127, 67, 0, 0, 0, 0, 182, 118, 0, 0, 0, 0, 234, 162, 0, 0, 0, 0, 358, 202, 0, 0, 0, 0, 425, 224, 0, 0, 0, 0, 463, 245, 0, 0, 0, 0, 483, 301, 0, 0, 0, 0, 490, 353, 0, 0, 0, 0, 495, 364)
+}
+point_count = 19
+
+[node name="stage1" type="Node2D" unique_id=609770304]
+script = ExtResource("1_27krv")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1283507474]
+z_index = -1
+texture = ExtResource("2_6ah5d")
+
+[node name="player_spawn" type="Marker2D" parent="." unique_id=1365377881]
+position = Vector2(-136, -16)
+
+[node name="mob_spawn" type="Path2D" parent="." unique_id=57642721]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_wro7i")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="mob_spawn" unique_id=105139524]
+position = Vector2(-43, -357)
+rotation = 1.5707964
+
+[node name="EntityLayer" type="Node2D" parent="." unique_id=796228973]
+y_sort_enabled = true
+
+[node name="slime_spawner" parent="." unique_id=1213560847 node_paths=PackedStringArray("spawn_path", "entity_layer") instance=ExtResource("7_6ah5d")]
+spawn_path = NodePath("../mob_spawn")
+entity_layer = NodePath("../EntityLayer")
+
+[node name="tree" parent="." unique_id=1449986350 instance=ExtResource("3_mmq3r")]
+position = Vector2(-562, -274)
+
+[node name="tree2" parent="." unique_id=433265483 instance=ExtResource("3_mmq3r")]
+position = Vector2(-595, -349)
+
+[node name="tree3" parent="." unique_id=1676667524 instance=ExtResource("3_mmq3r")]
+position = Vector2(-595, -203)
+
+[node name="tree4" parent="." unique_id=1750962438 instance=ExtResource("3_mmq3r")]
+position = Vector2(-493, -170)
+
+[node name="tree5" parent="." unique_id=856355243 instance=ExtResource("3_mmq3r")]
+position = Vector2(-366, -287)
+
+[node name="tree6" parent="." unique_id=225116903 instance=ExtResource("3_mmq3r")]
+position = Vector2(-311, -95)
+
+[node name="large rock" parent="." unique_id=90872114 instance=ExtResource("4_m65o7")]
+position = Vector2(-279, -295)
+
+[node name="tree7" parent="." unique_id=962535929 instance=ExtResource("3_mmq3r")]
+position = Vector2(-230, -304)
+
+[node name="tree8" parent="." unique_id=1671743026 instance=ExtResource("3_mmq3r")]
+position = Vector2(-248, -218)
+
+[node name="tree10" parent="." unique_id=736158492 instance=ExtResource("3_mmq3r")]
+position = Vector2(-128, -323)
+
+[node name="tree9" parent="." unique_id=159886617 instance=ExtResource("3_mmq3r")]
+position = Vector2(-145, -265)
+
+[node name="tree11" parent="." unique_id=784912899 instance=ExtResource("3_mmq3r")]
+position = Vector2(150, -302)
+
+[node name="medium_rock" parent="." unique_id=1525998808 instance=ExtResource("5_hruy2")]
+position = Vector2(255, -280)
+
+[node name="tree12" parent="." unique_id=1414288539 instance=ExtResource("3_mmq3r")]
+position = Vector2(336, -295)
+
+[node name="medium_rock2" parent="." unique_id=254785504 instance=ExtResource("5_hruy2")]
+position = Vector2(437, -200)
+
+[node name="medium_rock3" parent="." unique_id=381109537 instance=ExtResource("5_hruy2")]
+position = Vector2(71, 113)
+
+[node name="small rock" parent="." unique_id=93250313 instance=ExtResource("6_6cpta")]
+position = Vector2(419, 301)
+
+[node name="small rock2" parent="." unique_id=1123104785 instance=ExtResource("6_6cpta")]
+position = Vector2(328, 277)

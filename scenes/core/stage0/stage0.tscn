@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bg8t1muj78dop" path="res://scripts/core/stage_0/stage_0.gd" id="1_r8boy"]
 [ext_resource type="Texture2D" uid="uid://cwhwo4iftmci7" path="res://assets/world/stage0/CheckerBase.png" id="1_yktdf"]
-[ext_resource type="PackedScene" uid="uid://dr3jqni0rnxth" path="res://scenes/player/characters/bucky/Bucky.tscn" id="2_51b0v"]
 [ext_resource type="PackedScene" uid="uid://dos1ltv3auaqg" path="res://scenes/spawners/slime_spawner/slime_spawner.tscn" id="3_51b0v"]
+[ext_resource type="PackedScene" uid="uid://bvtwhnhgsax66" path="res://scenes/player/characters/yuri_shephard/yuri_shephard.tscn" id="3_y1uqt"]
 [ext_resource type="PackedScene" uid="uid://b6hbg0eequgyu" path="res://scenes/ui/player_hud/player_hud.tscn" id="4_cfff0"]
 [ext_resource type="PackedScene" uid="uid://bfox14gkhoeng" path="res://scenes/spawners/orb_spawner/orb_spawner.tscn" id="6_7288t"]
+
+[sub_resource type="Curve2D" id="Curve2D_7288t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -341, -214, 0, 0, 0, 0, 362, -239, 0, 0, 0, 0, 352, 157, 0, 0, 0, 0, -357, 141, 0, 0, 0, 0, -347, -217)
+}
+point_count = 5
 
 [node name="Stage 0" type="Node2D" unique_id=1414036859]
 script = ExtResource("1_r8boy")
@@ -26,10 +32,17 @@ texture = ExtResource("1_yktdf")
 position = Vector2(640, 360)
 texture = ExtResource("1_yktdf")
 
-[node name="Bucky" parent="." unique_id=1389102496 instance=ExtResource("2_51b0v")]
+[node name="Yuri_Shephard" parent="." unique_id=1389102496 instance=ExtResource("3_y1uqt")]
 
 [node name="slime_spawner" parent="." unique_id=1213560847 instance=ExtResource("3_51b0v")]
 
 [node name="PlayerHUD" parent="." unique_id=102203020 instance=ExtResource("4_cfff0")]
 
 [node name="OrbSpawner" parent="." unique_id=1524798475 instance=ExtResource("6_7288t")]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1947524034]
+curve = SubResource("Curve2D_7288t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1004954078]
+position = Vector2(-341, -214)
+rotation = -0.0355469

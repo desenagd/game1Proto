@@ -10,9 +10,11 @@ var is_ready : bool = true
 var animation_name : String = ""
 
 func _ready() -> void:
-	await get_tree().process_frame
-	var index = caster.abilities.find(self)
-	animation_name = "ability_" + str(index + 1)
+	#await get_tree().process_frame
+	#var index = caster.abilities.find(self)
+	#animation_name = "ability_" + str(index + 1)
+	pass
+	
 	#print("ability slot assigned: ", animation_name)
 
 func _physics_process(delta: float) -> void:

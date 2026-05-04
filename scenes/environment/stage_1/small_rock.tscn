@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ca0iwpftdtw64"]
+
+[ext_resource type="Texture2D" uid="uid://d0o2vreg1pmg6" path="res://assets/world/stage1/Rock_Small.png" id="1_5e0qu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8nkq"]
+size = Vector2(17, 4)
+
+[node name="small rock" type="StaticBody2D" unique_id=93250313]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1006900146]
+texture = ExtResource("1_5e0qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1011899127]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_o8nkq")

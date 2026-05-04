@@ -19,13 +19,13 @@ func connect_mob( mob : Entity ) -> void:
 	mob.died.connect( _on_mob_died )
 		
 func _on_mob_died( spawn_position : Vector2 ) -> void:
-	print("Mob died at: ", spawn_position)
+	#print("Mob died at: ", spawn_position)
 	var orb_scene = _roll_drop()
 	if orb_scene == null:
-		print("No Orb Drop this time")
+		#print("No Orb Drop this time")
 		return
 		
-	print("Dropping: ", orb_scene.resource_path)
+	#print("Dropping: ", orb_scene.resource_path)
 	var orb = orb_scene.instantiate()
 	orb.global_position = spawn_position
 	get_tree().current_scene.add_child( orb )

@@ -7,7 +7,6 @@ var detection_radius : float = 600.0
 var attack_radius : float = 50.0
 
 func _physics_process(delta) -> void:
-	# Lazy initialization
 	if not entity:
 		entity = get_parent() as Entity
 		return
@@ -15,6 +14,14 @@ func _physics_process(delta) -> void:
 		var players = get_tree().get_nodes_in_group("player")
 		if players.size() > 0:
 			target = players[0] as Entity
+		return
+		
+	if entity.is_enchained:
+		return
+		
+	if entity.is_stunned:
+		entity.velocity = Vector2.ZERO
+		entity.move_and_slide()
 		return
 	
 	var distance = entity.global_position.distance_to(target.global_position)

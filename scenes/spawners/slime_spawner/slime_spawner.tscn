@@ -5,9 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://clyr2864uv6nu" path="res://scenes/monsters/slime/BaseSlime.tscn" id="3_grh5y"]
 [ext_resource type="PackedScene" uid="uid://bfox14gkhoeng" path="res://scenes/spawners/orb_spawner/orb_spawner.tscn" id="4_u7q7m"]
 
+[sub_resource type="Curve2D" id="Curve2D_u7q7m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -227, -171, 0, 0, 0, 0, 294, -149, 0, 0, 0, 0, 289, 197, 0, 0, 0, 0, -270, 213, 0, 0, 0, 0, -231, -177)
+}
+point_count = 5
+
 [node name="slime_spawner" unique_id=1213560847 node_paths=PackedStringArray("orb_spawner") instance=ExtResource("1_hb0ui")]
 script = ExtResource("2_1shoh")
 mob_scenes = Array[PackedScene]([ExtResource("3_grh5y")])
 orb_spawner = NodePath("orb_spawner")
 
 [node name="orb_spawner" parent="." index="0" unique_id=1524798475 instance=ExtResource("4_u7q7m")]
+
+[node name="Path2D" type="Path2D" parent="." index="1" unique_id=1333845950]
+position = Vector2(-16.287165, 19.4846)
+scale = Vector2(1.8989363, 1.8897436)
+curve = SubResource("Curve2D_u7q7m")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=1600845499]
+position = Vector2(-227, -171)
+rotation = 0.04220142

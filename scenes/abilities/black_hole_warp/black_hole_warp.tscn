@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2yx58r8rmlw"]
+
+[ext_resource type="Script" uid="uid://lk3eiyekb4bj" path="res://scripts/abilities/black_hole_warp/black_hole_warp.gd" id="1_kruc0"]
+
+[node name="BlackHoleWarp" type="Node2D" unique_id=1927157064]
+script = ExtResource("1_kruc0")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cmjfa468ysk8q"]
+
+[ext_resource type="Texture2D" uid="uid://03xs5pw3drpp" path="res://assets/world/stage1/Rock_Medium.png" id="1_6546b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8dpj"]
+size = Vector2(26, 8)
+
+[node name="medium_rock" type="StaticBody2D" unique_id=1525998808]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981033262]
+texture = ExtResource("1_6546b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232233179]
+position = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_p8dpj")

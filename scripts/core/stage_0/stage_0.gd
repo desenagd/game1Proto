@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var hud = $PlayerHUD
-@onready var player = $Bucky
+@onready var player = $Yuri_Shephard
 @onready var orb_spawner = $OrbSpawner
 
 func _ready() -> void:

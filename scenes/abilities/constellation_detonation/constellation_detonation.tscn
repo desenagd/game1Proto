@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckithnnwyol36"]
+
+[ext_resource type="Script" uid="uid://did5st0213yhj" path="res://scripts/abilities/constellation_detonation/constellation_detonation.gd" id="1_x0tv7"]
+
+[node name="constellation_detonation" type="Node2D" unique_id=1906834436]
+script = ExtResource("1_x0tv7")

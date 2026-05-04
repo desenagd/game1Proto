@@ -6,19 +6,19 @@ extends Entity
 #var punch = load_ability("punch")
 
 func _ready() -> void:
-	max_health = 150
-	current_health = 150
-	max_mana = 150
-	health_regen = 5
-	mana_regen = 5
-	armor = 10
-	current_speed = 312
+	max_health = 100
+	current_health = 100
+	max_mana = 300
+	health_regen = 15
+	mana_regen = 250
+	armor = 100
+	current_speed = 95
 	
 	_health_bar.update(current_health, max_health)
 	_animation_tree.active = true
-	load_ability("light_punch")
-	load_ability("rocket_punch")
-	load_ability("tumble")
+	load_ability("constellation_detonation")
+	load_ability("planetary_impact")
+	load_ability("black_hole_warp")
 
 func _physics_process(delta) -> void:
 	super(delta)

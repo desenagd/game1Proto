@@ -7,12 +7,20 @@ var _animation_tree : AnimationTree
 func _ready() -> void:
 	entity = get_parent() as Entity
 	_animation_tree = get_parent().get_node("AnimationTree")
-	print("entity: ", entity)
-	print("animation_tree: ", _animation_tree)
+	#print("entity: ", entity)
+	#print("animation_tree: ", _animation_tree)
 
 func _physics_process(delta) -> void:
-	
 	if not entity:
+		return
+		
+	#print("entity instance id: ", entity.get_instance_id())
+	#print("entity is_enchained: ", entity.is_enchained)
+		
+	if entity.is_enchained:
+		#print("ENCHAINED - stopping movement")
+		entity.velocity = Vector2.ZERO
+		entity.move_and_slide()
 		return
 		
 	var is_dashing = false

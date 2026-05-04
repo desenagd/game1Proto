@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c5pr2i8kxosr1"]
+
+[ext_resource type="Texture2D" uid="uid://mktjpyomsjny" path="res://assets/world/stage1/Maple_Tree.png" id="1_4uupx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rvhet"]
+radius = 5.0
+height = 24.0
+
+[node name="tree" type="StaticBody2D" unique_id=1449986350]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=64110586]
+texture = ExtResource("1_4uupx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=516734584]
+position = Vector2(-1, 36)
+shape = SubResource("CapsuleShape2D_rvhet")

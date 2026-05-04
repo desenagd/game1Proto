@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://54k47bww3fl7"]
+
+[ext_resource type="Script" uid="uid://clkm7h4ljwpg" path="res://scripts/abilities/planetary_impact/planetary_impact.gd" id="1_qbudg"]
+
+[node name="Impact_Explosion" type="Node" unique_id=1101751759]
+script = ExtResource("1_qbudg")
