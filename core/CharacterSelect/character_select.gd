@@ -10,6 +10,16 @@ const ROSTER: Array[ Dictionary ] = [
 					  "Tumble - A super fast dash in a direction"],
 		"scene": "res://scenes/player/characters/bucky/Bucky.tscn"
 	},
+	
+	{
+		"name": "Yuri Shephard",
+		"description": "Few call him courageous, most call him delusional, but ALL call him powerful. Yuri is the heir to the 'scouts' and he wears that badge with pride",
+		"passive": "Not sure yet tbh ngl",
+		"abilities": ["Constellation Detonation - By attacking 4 enemies, a constellation is born, dealing damage and stunning all enemies inside the constellation", 
+					  "Planetary Impact - Yuri beckons down a meteor from the sky, dealing damage and knocking back enemies in the impact zone",
+					  "Black Hole Warp - By creating a black hole around him, Yuri is able to instantly teleport through the fabric of space"],
+		"scene": "res://scenes/player/characters/yuri_shephard/yuri_shephard.tscn"
+	},
 ]
 
 @onready var character_grid : GridContainer = $ScrollContainer/CharacterGrid
@@ -47,7 +57,7 @@ func _preview( index: int ) -> void:
 	select_button.text = "Play as %s" % data["name"]
 	
 func _on_select_pressed() -> void:
-	SceneManager.start_run( ROSTER[_selected_index]["name"])
+	GameManager.confirm_character( ROSTER[_selected_index]["name"])
 	
 	
 	

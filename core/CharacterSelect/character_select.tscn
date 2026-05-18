@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcmfve0x0ehve"]
 
-[ext_resource type="Script" uid="uid://40spe7014t3c" path="res://scripts/core/character_select/character_select.gd" id="1_6mri0"]
+[ext_resource type="Script" uid="uid://40spe7014t3c" path="res://core/CharacterSelect/character_select.gd" id="1_6mri0"]
 
 [node name="CharacterSelect" type="Control" unique_id=495326605]
 layout_mode = 3
@@ -48,22 +48,32 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="DescLabel" type="Label" parent="PreviewPanel/VBoxContainer" unique_id=1419602622]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="PassiveLabel" type="Label" parent="PreviewPanel/VBoxContainer" unique_id=691712285]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+autowrap_mode = 2
 
-[node name="AbilityContainer" type="HBoxContainer" parent="PreviewPanel/VBoxContainer" unique_id=631989040]
+[node name="AbilityContainer" type="VBoxContainer" parent="PreviewPanel/VBoxContainer" unique_id=1826516522]
 layout_mode = 2
 
 [node name="Ability1" type="Label" parent="PreviewPanel/VBoxContainer/AbilityContainer" unique_id=995910882]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="Ability2" type="Label" parent="PreviewPanel/VBoxContainer/AbilityContainer" unique_id=1500917652]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="Ability3" type="Label" parent="PreviewPanel/VBoxContainer/AbilityContainer" unique_id=13835960]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+autowrap_mode = 2
 
 [node name="SelectButton" type="Button" parent="PreviewPanel/VBoxContainer" unique_id=1464504270]
 layout_mode = 2

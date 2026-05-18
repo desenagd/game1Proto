@@ -5,27 +5,22 @@ class_name SlimeSpawner
 var _path_follow : PathFollow2D = null
 #@onready var _path_follow : PathFollow2D = null
 
-func _randomize_stats() -> void:
-	mob_min = 5
-	mob_max = 75
-	
-	interval_min = 0.1
-	interval_max = 2.0
-	
-	min_dist_min = 250.0
-	min_dist_max = 500.0
-	super._randomize_stats()
-
 func on_ready() -> void:
-	_path_follow = get_node( "Path2D/PathFollow2D")
-	if _path_follow == null:
-		push_warning( "Slime spawner: spawn_path is not assigned")
-		return
+	pass
+	#_path_follow = get_node( "Path2D/PathFollow2D")
+	#if _path_follow == null:
+		#push_warning( "Slime spawner: spawn_path is not assigned")
+		#return
 	#_path_follow = spawn_path.get_node( "PathFollow2D" )
 	#spawn_interval = 0.5
 	#max_mobs = 15
 	#min_spawn_distance = 250
 	#max_spawn_distance = 750
+	
+func set_spawn_path( path : Path2D ) -> void:
+	_path_follow = path.get_node( "PathFollow2D" )
+	if _path_follow == null:
+		push_warning("SlimeSpawner: PathFollow2D not found on given path")
 
 func on_mob_spawned( mob: Node ) -> void:
 	if orb_spawner != null:
@@ -39,3 +34,22 @@ func pick_spawn_position() -> Vector2:
 		return Vector2.INF
 	_path_follow.progress_ratio = randf()
 	return _path_follow.global_position
+	
+func _apply_difficulty( difficulty : String ) -> void:
+	match difficulty:
+		"EF1":
+			mob_min = 5;   mob_max = 15
+			interval_min = 1.5; interval_max = 3.0
+		"EF2":
+			mob_min = 15;  mob_max = 30
+			interval_min = 1.0; interval_max = 2.5
+		"EF3":
+			mob_min = 30;  mob_max = 50
+			interval_min = 0.8; interval_max = 2.0
+		"EF4":
+			mob_min = 50;  mob_max = 65
+			interval_min = 0.5; interval_max = 1.5
+		"EF5":
+			mob_min = 65;  mob_max = 80
+			interval_min = 0.1; interval_max = 1.0
+			

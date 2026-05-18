@@ -12,8 +12,6 @@ extends Control
 
 func _ready() -> void:
 	title_label.text = "YOU DIED"
-	retry_button.pressed.connect( _on_retry_pressed )
-	char_select_button.pressed.connect( _on_char_select_pressed )
 	main_menu_button.pressed.connect( _on_main_menu_pressed )
 	_populate_stats()
 	
@@ -29,12 +27,6 @@ func _format_time( seconds : float ) -> String:
 	var s : int = int( seconds ) % 60
 	return "%02d:%02d" % [m, s]
 	
-func _on_retry_pressed() -> void:
-	SceneManager.restart_run()
-
-func _on_char_select_pressed() -> void:
-	SceneManager.go_to_character_select()
-
 func _on_main_menu_pressed() -> void:
-	SceneManager.go_to_main_menu()
+	GameManager.go_to_main_menu()
 	

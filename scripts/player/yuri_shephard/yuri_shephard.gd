@@ -9,7 +9,7 @@ func _ready() -> void:
 	max_mana = 300
 	health_regen = 15
 	mana_regen = 250
-	armor = 100
+	armor = 10
 	current_speed = 95
 	
 	_health_bar.update(current_health, max_health)

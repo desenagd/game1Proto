@@ -12,6 +12,7 @@ func _ready() -> void:
 	reach = 150.0
 	damage = 0
 	meteor_damage = 80
+	cast_duration = 0.1
 	
 func _execute( mouse_pos : Vector2 ) -> void:
 	var dist := caster.global_position.distance_to( mouse_pos )

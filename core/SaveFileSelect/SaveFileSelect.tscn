@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b0tlf2rfq761d"]
+
+[ext_resource type="Script" uid="uid://c7cardopxmqmf" path="res://core/SaveFileSelect/save_file_select.gd" id="1_6853b"]
+
+[node name="SaveFileSelect" type="Control" unique_id=2103006262]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6853b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=677832879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -68.0
+offset_right = 61.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="Button" parent="VBoxContainer" unique_id=562422639]
+layout_mode = 2
+text = "SLOT 1"
+
+[node name="Slot2" type="Button" parent="VBoxContainer" unique_id=727583068]
+layout_mode = 2
+text = "SLOT 2"
+
+[node name="Slot3" type="Button" parent="VBoxContainer" unique_id=1179249529]
+layout_mode = 2
+text = "SLOT 3"
+
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=170722942]
+layout_mode = 2
+text = "BACK"
+
+[connection signal="pressed" from="VBoxContainer/Slot1" to="." method="_on_slot_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/Slot2" to="." method="_on_slot_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Slot3" to="." method="_on_slot_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

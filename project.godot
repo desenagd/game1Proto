@@ -17,7 +17,18 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*uid://co7smshbj263s"
+GameManager="*uid://co7smshbj263s"
+
+[display]
+
+window/size/mode=3
+
+[global_group]
+
+BossTriggerZone=""
+mob_spawn_paths=""
+extraction_zone=""
+player_spawn=""
 
 [input]
 

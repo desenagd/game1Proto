@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://djf3ibgo23x2m"]
+
+[ext_resource type="Script" uid="uid://c321l8nqgee78" path="res://core/mission/mission.gd" id="1_qpavy"]
+[ext_resource type="PackedScene" uid="uid://dos1ltv3auaqg" path="res://scenes/spawners/slime_spawner/slime_spawner.tscn" id="2_idxbx"]
+
+[node name="Mission" type="Node2D" unique_id=1149018253]
+script = ExtResource("1_qpavy")
+slime_spawner_scene = ExtResource("2_idxbx")

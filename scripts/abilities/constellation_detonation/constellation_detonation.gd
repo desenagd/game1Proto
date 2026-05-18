@@ -13,6 +13,7 @@ func _ready() -> void:
 	cooldown = 0.3
 	reach = 1500.0
 	damage = 0
+	cast_duration = 0.42
 
 func _on_hit( target ) -> void:
 	if _is_already_marked( target ):

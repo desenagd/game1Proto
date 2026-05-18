@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c61pjhj0wp0xw"]
 
-[ext_resource type="Script" uid="uid://ceij8lljnhvwc" path="res://scripts/core/death_screen/death_screen.gd" id="1_cewr7"]
+[ext_resource type="Script" uid="uid://ceij8lljnhvwc" path="res://core/DeathScreen/death_screen.gd" id="1_cewr7"]
 
 [node name="DeathScreen" type="Control" unique_id=1841648487]
 layout_mode = 3
@@ -53,14 +53,6 @@ layout_mode = 2
 
 [node name="RunTimeLabel" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/StatsVBox" unique_id=1667846563]
 layout_mode = 2
-
-[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1548674208]
-layout_mode = 2
-text = "Retry Level"
-
-[node name="CharSelectButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1461011367]
-layout_mode = 2
-text = "Back to Character Selection"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=340025709]
 layout_mode = 2

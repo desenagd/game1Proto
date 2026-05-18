@@ -31,8 +31,6 @@ var _player : Entity = null
 
 #=========== LIFECYCLE ================
 func _ready() -> void:
-	if randomize_stats:
-		_randomize_stats()
 	_find_player()
 	on_ready()
 	
@@ -133,3 +131,11 @@ func _find_player() -> void:
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		_player = players[0] as Entity
+		
+func set_difficulty( difficulty : String) -> void:
+	_apply_difficulty( difficulty )
+	if randomize_stats:
+		_randomize_stats()
+		
+func _apply_difficulty( difficulty : String ) -> void:
+	pass

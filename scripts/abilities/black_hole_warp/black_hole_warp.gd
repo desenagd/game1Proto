@@ -9,6 +9,7 @@ func _ready() -> void:
 	mana_cost = 5
 	cooldown = 1.0
 	range = 600.0
+	cast_duration = 0.75
 	
 func _execute( mouse_pos : Vector2 ) -> void:
 	#print("EXECUTE CALLED - setting enchained")

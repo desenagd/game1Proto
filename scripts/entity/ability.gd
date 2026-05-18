@@ -8,6 +8,7 @@ var mana_cost : int = 1
 var _cooldown_timer : float = 0.0
 var is_ready : bool = true
 var animation_name : String = ""
+var cast_duration : float = 0.5
 
 func _ready() -> void:
 	#await get_tree().process_frame
@@ -61,10 +62,13 @@ func _play_animation() -> void:
 		if anim_tree.get(blend_path) != null and anim_tree.get(condition_path) != null:
 			anim_tree[blend_path] = dir
 			anim_tree[condition_path] = true
+			caster.is_enchained = true
 		
-			await caster.get_tree().create_timer(0.5).timeout
+			await caster.get_tree().create_timer( cast_duration ).timeout
 			#print("resetting condition")
 			anim_tree[condition_path] = false
+		
+			caster.is_enchained = false
 		
 func _execute( mouse_pos : Vector2 ) -> void:
 	pass

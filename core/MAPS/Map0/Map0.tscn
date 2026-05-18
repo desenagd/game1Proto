@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ci48endjmyjh0"]
+
+[ext_resource type="Script" uid="uid://btqg1opmlgl3y" path="res://core/MAPS/Map0/map_0.gd" id="1_bpkwg"]
+[ext_resource type="PackedScene" uid="uid://dos1ltv3auaqg" path="res://scenes/spawners/slime_spawner/slime_spawner.tscn" id="2_7oq7r"]
+[ext_resource type="Texture2D" uid="uid://cwhwo4iftmci7" path="res://assets/world/stage0/CheckerBase.png" id="2_67xoq"]
+
+[sub_resource type="Curve2D" id="Curve2D_7288t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -351, -239, 0, 0, 0, 0, 384, -239, 0, 0, 0, 0, 384, 160, 0, 0, 0, 0, -352, 160, 0, 0, 0, 0, -352, -238)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0ulh"]
+size = Vector2(322, 259)
+
+[node name="Map 0" type="Node2D" unique_id=1414036859]
+script = ExtResource("1_bpkwg")
+
+[node name="slime_spawner" parent="." unique_id=1213560847 instance=ExtResource("2_7oq7r")]
+
+[node name="background TL" type="Sprite2D" parent="." unique_id=1150665422]
+position = Vector2(-640, -359)
+texture = ExtResource("2_67xoq")
+
+[node name="background TR" type="Sprite2D" parent="." unique_id=2098562042]
+position = Vector2(640, -360)
+texture = ExtResource("2_67xoq")
+
+[node name="background BL" type="Sprite2D" parent="." unique_id=1770060351]
+position = Vector2(-640, 360)
+texture = ExtResource("2_67xoq")
+
+[node name="background BR" type="Sprite2D" parent="." unique_id=519924661]
+position = Vector2(640, 360)
+texture = ExtResource("2_67xoq")
+
+[node name="MobPath" type="Path2D" parent="." unique_id=1947524034 groups=["mob_spawn_paths"]]
+curve = SubResource("Curve2D_7288t")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MobPath" unique_id=1004954078]
+position = Vector2(-351, -239)
+
+[node name="BossTriggerZone" type="Area2D" parent="." unique_id=1741366345 groups=["BossTriggerZone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossTriggerZone" unique_id=585081568]
+position = Vector2(1104, -575.75)
+shape = SubResource("RectangleShape2D_h0ulh")
+
+[node name="ExtractionZone" type="Area2D" parent="." unique_id=1502658126 groups=["extraction_zone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExtractionZone" unique_id=1039964558]
+position = Vector2(-1071, 529.5)
+shape = SubResource("RectangleShape2D_h0ulh")
+
+[node name="player spawn" type="Marker2D" parent="." unique_id=412460075 groups=["player_spawn"]]
+
+[node name="Panel" type="Panel" parent="." unique_id=883229520]
+offset_left = -367.0
+offset_top = -241.0
+offset_right = -353.0
+offset_bottom = 159.0
+
+[node name="Panel2" type="Panel" parent="." unique_id=460390527]
+offset_left = 383.0
+offset_top = -240.0
+offset_right = 397.0
+offset_bottom = 160.0
+
+[node name="Panel3" type="Panel" parent="." unique_id=719855093]
+offset_left = -367.0
+offset_top = -257.0
+offset_right = 396.0
+offset_bottom = -240.0
+
+[node name="Panel4" type="Panel" parent="." unique_id=98557832]
+offset_left = -367.0
+offset_top = 160.0
+offset_right = 397.0
+offset_bottom = 177.0
