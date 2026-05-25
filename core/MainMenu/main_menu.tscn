@@ -64,15 +64,15 @@ text = "NewRun"
 layout_mode = 2
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1587123266]
-layout_mode = 2
-text = "Exit"
-
 [node name="Records" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1114520782]
 layout_mode = 2
 text = "Records"
 
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1587123266]
+layout_mode = 2
+text = "Exit"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewRunButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Records" to="." method="_on_records_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_pressed"]

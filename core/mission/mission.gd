@@ -76,6 +76,16 @@ func _spawn_player() -> void:
 	var player = player_scene.instantiate()
 	player.global_position = spawn_marker.global_position
 	current_map.add_child( player )
+	var camera : Camera2D = player.get_node("Camera2D")
+	camera.set_limit(SIDE_TOP, current_map.MAX_Y)
+	camera.set_limit(SIDE_BOTTOM, current_map.MIN_Y)
+	camera.set_limit(SIDE_RIGHT, current_map.MAX_X)
+	camera.set_limit(SIDE_LEFT, current_map.MIN_X)
+	camera.set_limit_enabled(true)
+	camera.set_position_smoothing_enabled(true)
+	
+	
+
 	
 	player.died.connect(_on_player_died)
 	

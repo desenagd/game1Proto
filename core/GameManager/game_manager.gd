@@ -81,6 +81,10 @@ func go_on_mission() -> void:
 	# TODO: mission selection logic goes here (random pick, difficulty, etc.)
 	get_tree().change_scene_to_file( SCENES["mission"] )
 	
+func back_to_castra_salus() -> void:
+	# TODO: This will may need to be changed to factor in save slot data
+	get_tree().change_scene_to_file( SCENES["castra_salus"] )
+	
 func complete_mission() -> void:
 	#TODO - APPLY MISSION REWARDS TO SAVE DATA HERE
 	get_tree().change_scene_to_file( SCENES["castra_salus"] )

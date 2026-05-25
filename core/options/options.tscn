@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dph1cyu541v85"]
 
+[ext_resource type="Script" uid="uid://dk6xcrhj682xv" path="res://core/options/options.gd" id="1_wiktk"]
+
 [node name="Options" type="Control" unique_id=374943299]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wiktk")
+
+[node name="BackButton" type="Button" parent="." unique_id=1382705727]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
