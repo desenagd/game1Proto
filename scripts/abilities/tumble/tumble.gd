@@ -6,5 +6,5 @@ func _ready() -> void:
 	
 	mana_cost = 15
 	dash_distance = 125.0
-	dash_speed = 1250.0
-	cooldown = 0
+	dash_speed = 500.0
+	cooldown = 0.3

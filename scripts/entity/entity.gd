@@ -103,7 +103,8 @@ func apply_damage(amount) -> void:
 		amount = amount * ((100 - armor) * 0.01)
 	current_health -= amount
 	
-	flash_damage()
+	if amount > 0:
+		flash_damage()
 	show_dmg_numbers( amount )
 	
 	if current_health <= 0:

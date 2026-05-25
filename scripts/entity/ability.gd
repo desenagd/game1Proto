@@ -38,7 +38,8 @@ func activate( mouse_pos : Vector2 ) -> void:
 	if caster.current_mana < mana_cost:
 		#print("Not Enough Mana!")
 		return
-		
+	# TODO: (1) Check ability reach against mouse position before playing animation.
+	# 		(2) Add field that allows ability to be cast even if mouse position further than reach
 	caster.modify_mana( -mana_cost )
 	is_ready = false
 	_cooldown_timer = cooldown

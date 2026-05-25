@@ -7,7 +7,8 @@ func _ready() -> void:
 	mana_cost = 3
 	damage = 30
 	cooldown = 0
+	cast_duration = 0.2
 	
-	projectile_speed = 200.0
+	projectile_speed = 600.0
 	projectile_range = 200.0
 	await super._ready()

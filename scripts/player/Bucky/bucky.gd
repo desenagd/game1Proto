@@ -16,9 +16,9 @@ func _ready() -> void:
 	
 	_health_bar.update(current_health, max_health)
 	_animation_tree.active = true
-	load_ability("constellation_detonation")
-	load_ability("planetary_impact")
-	load_ability("black_hole_warp")
+	load_ability("light_punch")
+	load_ability("rocket_punch")
+	load_ability("tumble")
 
 func _physics_process(delta) -> void:
 	super(delta)
