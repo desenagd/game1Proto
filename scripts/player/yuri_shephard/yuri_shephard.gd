@@ -8,7 +8,7 @@ func _ready() -> void:
 	current_health = 100
 	max_mana = 300
 	health_regen = 15
-	mana_regen = 250
+	mana_regen = 60
 	armor = 10
 	current_speed = 95
 	

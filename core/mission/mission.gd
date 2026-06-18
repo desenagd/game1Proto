@@ -50,8 +50,8 @@ func _ready() -> void:
 	pass
 
 # Pass random string if random difficulty or map
-func instantiate_mission(difficulty_key,
-						 map_key) -> void:
+# TODO: Possibly edit this to take a specific value instead of bools for mana and damage
+func instantiate_mission(difficulty_key, map_key, infinite_mana: bool, no_damage: bool) -> void:
 	if difficulty_key is not MissionRank:
 		_randomize_mission()
 	else:
@@ -62,7 +62,7 @@ func instantiate_mission(difficulty_key,
 	else:
 		_load_map(map_key)
 	_setup_spawners()
-	_spawn_player()
+	_spawn_player(infinite_mana, no_damage)
 	current_state = MissionState.NORMAL
 	await get_tree().process_frame
 	_notify_spawners()
@@ -100,7 +100,7 @@ func _setup_spawners() -> void:
 	spawner.set_spawn_path( spawn_path )
 	spawner.add_to_group( "mob_spawners" )
 	
-func _spawn_player() -> void:
+func _spawn_player(infinite_mana: bool, no_damage: bool) -> void:
 	var spawn_marker = get_tree().get_first_node_in_group("player_spawn")
 	
 	if spawn_marker == null:
@@ -111,7 +111,15 @@ func _spawn_player() -> void:
 	var player_scene = load( GameManager.CHARACTER_SCENES[character_id] )
 	var player = player_scene.instantiate()
 	player.global_position = spawn_marker.global_position
+		
 	current_map.add_child( player )
+	
+	if infinite_mana:
+		player.mana_regen = player.max_mana
+	if no_damage:
+		player.armor = 100
+	
+	# Got to do this here so that we have the player camera
 	var camera : Camera2D = player.get_node("Camera2D")
 	camera.set_limit(SIDE_TOP, current_map.MAX_Y)
 	camera.set_limit(SIDE_BOTTOM, current_map.MIN_Y)
@@ -119,6 +127,7 @@ func _spawn_player() -> void:
 	camera.set_limit(SIDE_LEFT, current_map.MIN_X)
 	camera.set_limit_enabled(true)
 	camera.set_position_smoothing_enabled(true)
+	
 	player.died.connect(_on_player_died)
 	
 func _on_player_died( position : Vector2 ) -> void:

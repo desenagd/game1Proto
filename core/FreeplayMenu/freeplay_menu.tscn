@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7fyy34wic76v"]
 
-[ext_resource type="Script" uid="uid://bkgmab0p3ulme" path="res://core/FreeplayMenu/freeplay_menu.tscn.gd" id="1_ls10w"]
+[ext_resource type="Script" uid="uid://bkgmab0p3ulme" path="res://core/FreeplayMenu/freeplay_menu.gd" id="1_ls10w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls10w"]
 bg_color = Color(0.31863582, 0.35677418, 0.3187199, 1)
@@ -39,6 +39,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/CharacterBox" unique_id=437502166]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Character"
 horizontal_alignment = 1
 
@@ -49,6 +50,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/DifficultyBox" unique_id=161786954]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Difficulty"
 horizontal_alignment = 1
 
@@ -59,6 +61,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MapBox" unique_id=1364654022]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Map"
 horizontal_alignment = 1
 
@@ -69,6 +72,7 @@ vertical = true
 
 [node name="Label" type="Label" parent="PanelContainer/HBoxContainer/OtherSettingsBox" unique_id=1430802734]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "Modifiers"
 horizontal_alignment = 1
 

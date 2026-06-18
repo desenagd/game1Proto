@@ -90,7 +90,7 @@ func confirm_character( character_id : String ) -> void:
 func set_character( character_id : String) -> void:
 	run_state["selected_character"] = character_id
 
-func go_on_mission(rank_key, map_key) -> void:
+func go_on_mission(rank_key, map_key, infinite_mana: bool, damage_immune: bool) -> void:
 	# TODO: mission selection logic goes here (random pick, difficulty, etc.)
 	var mission_instance = mission_scene.instantiate()
 	#await get_tree().process_frame
@@ -100,7 +100,7 @@ func go_on_mission(rank_key, map_key) -> void:
 	root.remove_child(old_scene)
 	root.add_child(mission_instance)
 	
-	mission_instance.instantiate_mission(rank_key, map_key)
+	mission_instance.instantiate_mission(rank_key, map_key, infinite_mana, damage_immune)
 	get_tree().current_scene = mission_instance
 	old_scene.queue_free() # may or may not need this since this is singleton
 

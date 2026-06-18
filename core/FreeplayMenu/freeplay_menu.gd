@@ -8,7 +8,11 @@ extends Node2D
 var mission_rank: String = ""
 var mission_map: String = ""
 var mission_character_id: String = ""
+var damage_immune: bool = false
+var infinite_mana: bool = false
 
+
+# Default seleceted items
 var rank_default: String = rank_to_string(Mission.DIFFICULTY_SETTINGS.keys()[0])
 var map_default: String = map_to_string(Mission.MAPS.keys()[0])
 var character_default = GameManager.CHARACTER_SCENES.keys()[0]
@@ -17,11 +21,7 @@ var character_default = GameManager.CHARACTER_SCENES.keys()[0]
 func _ready():
 	# Fill box continers with available options
 	# Difficulties
-	# Characters
-	# Maps
-	# Other settings (No damage, etc.)
 	var difficulties = Mission.DIFFICULTY_SETTINGS.keys()
-	#difficulties.append(Mission.RANDOM)
 	for diff: Mission.MissionRank in difficulties:
 		instantiate_and_add_button(difficulty_settings, 
 									rank_to_string(diff),
@@ -29,6 +29,7 @@ func _ready():
 	# Add random option
 	instantiate_and_add_button(difficulty_settings, Mission.RANDOM, _on_rank_pressed)
 	
+	# Maps
 	var maps = Mission.MAPS.keys()
 	for map in maps:
 		instantiate_and_add_button(map_select,
@@ -36,10 +37,15 @@ func _ready():
 								_on_map_pressed)
 	instantiate_and_add_button(map_select, Mission.RANDOM, _on_rank_pressed)
 	
+	# Characters
 	var characters = GameManager.CHARACTER_SCENES.keys()
-	for char in characters:
-		instantiate_and_add_button(character_select, char, _on_char_pressed)
+	for charac in characters:
+		instantiate_and_add_button(character_select, charac, _on_char_pressed)
 	instantiate_and_add_button(character_select, Mission.RANDOM, _on_char_pressed)
+	
+	# Other settings (No damage, etc.)
+	instantiate_and_add_button(other_select, "No Damage", _on_no_damage_pressed)
+	instantiate_and_add_button(other_select, "Infinite Mana", _on_infinite_mana_pressed)
 
 # TODO: Gotta update as ranks and maps grow
 # Consider doing away with enums, might be more trouble than its worth
@@ -57,8 +63,8 @@ func rank_to_string(rank: Mission.MissionRank) -> String:
 			return "EF5"
 	return ""
 
-func string_to_rank(str: String) -> Mission.MissionRank:
-	match str:
+func string_to_rank(string: String) -> Mission.MissionRank:
+	match string:
 		"EF1":
 			return Mission.MissionRank.EF1
 		"EF2":
@@ -77,8 +83,8 @@ func map_to_string(map: Mission.MissionMaps) -> String:
 			return "test"
 	return ""
 
-func string_to_map_enum(str: String) -> Mission.MissionMaps:
-	match str:
+func string_to_map_enum(string: String) -> Mission.MissionMaps:
+	match string:
 		"test":
 			return Mission.MissionMaps.TEST
 	return Mission.MissionMaps.NONE
@@ -117,9 +123,6 @@ func clear_column_pressed(container: BoxContainer) -> void:
 	for child in container.get_children():
 		if child is Button:
 			child.button_pressed = false
-	#var button_children = container.find_children("*", "Button")
-	#for butt: Button in button_children:
-		#butt.button_pressed = false
 
 func _on_rank_pressed(butt: Button, parent: BoxContainer):
 	set_rank(butt.text)
@@ -136,6 +139,13 @@ func _on_char_pressed(butt: Button, parent: BoxContainer):
 	clear_column_pressed(parent)
 	butt.button_pressed = true
 
+func _on_infinite_mana_pressed(_butt: Button, _parent: BoxContainer):
+	infinite_mana = !infinite_mana
+
+func _on_no_damage_pressed(_butt: Button, _parent: BoxContainer):
+	damage_immune = !damage_immune
+	print(damage_immune)
+
 func _on_back_pressed():
 	GameManager.back_to_main_menu()
 
@@ -144,4 +154,5 @@ func _on_start_button_pressed():
 	# Just to cover "random" edge case
 	GameManager.set_character(mission_character_id if mission_character_id != Mission.RANDOM else choose_random_char_id())
 	GameManager.go_on_mission(mission_rank if mission_rank == Mission.RANDOM else string_to_rank(mission_rank), 
-							mission_map if mission_map == Mission.RANDOM else string_to_map_enum(mission_map))
+							mission_map if mission_map == Mission.RANDOM else string_to_map_enum(mission_map),
+							infinite_mana, damage_immune)
