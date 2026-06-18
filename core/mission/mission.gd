@@ -9,47 +9,83 @@ enum MissionState {
 	BOSS,
 	EXTRACTION,
 	COMPLETE,
-	}
-	
-const MAPS: Array[ String ] = [
-	"res://core/MAPS/Map0/Map0.tscn",
+}
+
+enum MissionMaps {
+	NONE,
+	TEST
+}
+
+const MAPS: Dictionary = {
+	MissionMaps.TEST : "res://core/MAPS/Map0/Map0.tscn",
 	#add map scenes here
-]
+}
+
+enum MissionRank {
+	NONE,
+	EF1,
+	EF2,
+	EF3,
+	EF4,
+	EF5
+}
+
+const RANDOM: String = "random"
 
 const DIFFICULTY_SETTINGS: Dictionary = {
-	"EF1" : { "timer" : 120.0},
-	"EF2" : { "timer" : 180.0},
-	"EF3" : { "timer" : 240.0},
-	"EF4" : { "timer" : 300.0},
-	"EF5" : { "timer" : 360.0},
+	MissionRank.EF1 : { "timer" : 120.0},
+	MissionRank.EF2 : { "timer" : 180.0},
+	MissionRank.EF3 : { "timer" : 240.0},
+	MissionRank.EF4 : { "timer" : 300.0},
+	MissionRank.EF5 : { "timer" : 360.0},
 }
 
 var current_state : MissionState = MissionState.LOADING
-var current_difficulty : String = ""
+var current_difficulty : MissionRank = MissionRank.NONE
 var current_map : Node = null
 var mission_timer : float = 0.0
 var is_overtime : bool = false
 
 func _ready() -> void:
-	_randomize_mission()
-	_load_map()
+	pass
+
+# Pass random string if random difficulty or map
+func instantiate_mission(difficulty_key,
+						 map_key) -> void:
+	if difficulty_key is not MissionRank:
+		_randomize_mission()
+	else:
+		_load_mission(difficulty_key)
+	
+	if map_key is not MissionMaps:
+		_load_random_map()
+	else:
+		_load_map(map_key)
 	_setup_spawners()
 	_spawn_player()
 	current_state = MissionState.NORMAL
 	await get_tree().process_frame
 	_notify_spawners()
-	
+
 func _randomize_mission() -> void:
-	var difficulties = DIFFICULTY_SETTINGS.keys()
-	current_difficulty = difficulties[ randi() % difficulties.size() ]
+	# Pick random difficulty
+	current_difficulty = DIFFICULTY_SETTINGS.keys()[ randi() % DIFFICULTY_SETTINGS.size() ]
 	print( "Mission Difficulty: ", current_difficulty)
 	
+func _load_mission(difficulty_key: MissionRank) -> void:
+	current_difficulty = difficulty_key
+
+func _load_map(map_key: MissionMaps) -> void:
+	var map_scene = load(MAPS[map_key])
+	current_map = map_scene.instantiate()
+	add_child(current_map)
+
 func _notify_spawners() -> void:
 	for spawner in get_tree().get_nodes_in_group("mob_spawners"):
 		spawner.set_difficulty( current_difficulty )
-		
-func _load_map() -> void:
-	var map_path = MAPS[ randi() % MAPS.size() ]
+
+func _load_random_map() -> void:
+	var map_path = MAPS.values()[ randi() % MAPS.size() ]
 	var map_scene = load( map_path )
 	current_map = map_scene.instantiate()
 	add_child( current_map )
@@ -83,10 +119,6 @@ func _spawn_player() -> void:
 	camera.set_limit(SIDE_LEFT, current_map.MIN_X)
 	camera.set_limit_enabled(true)
 	camera.set_position_smoothing_enabled(true)
-	
-	
-
-	
 	player.died.connect(_on_player_died)
 	
 func _on_player_died( position : Vector2 ) -> void:
@@ -95,19 +127,19 @@ func _on_player_died( position : Vector2 ) -> void:
 func _process(delta: float) -> void:
 	if current_state == MissionState.NORMAL or current_state == MissionState.OVERTIME:
 		mission_timer += delta
-		_check_overtime()
-	
+		if current_difficulty != MissionRank.NONE:
+			_check_overtime()
+
 func _check_overtime() -> void:
 	var time_limit = DIFFICULTY_SETTINGS[ current_difficulty ]["timer"]
 	if mission_timer >= time_limit and not is_overtime:
 		is_overtime = true
 		current_state = MissionState.OVERTIME
 		print("OVERTIME")
-		
+
 func die() -> void:
 	GameManager.die_on_mission()
-	
+
 func complete() -> void:
 	current_state = MissionState.COMPLETE
 	GameManager.complete_mission()
-		

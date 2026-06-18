@@ -132,10 +132,10 @@ func _find_player() -> void:
 	if players.size() > 0:
 		_player = players[0] as Entity
 		
-func set_difficulty( difficulty : String) -> void:
+func set_difficulty( difficulty : Mission.MissionRank) -> void:
 	_apply_difficulty( difficulty )
 	if randomize_stats:
 		_randomize_stats()
 		
-func _apply_difficulty( difficulty : String ) -> void:
+func _apply_difficulty( difficulty : Mission.MissionRank ) -> void:
 	pass

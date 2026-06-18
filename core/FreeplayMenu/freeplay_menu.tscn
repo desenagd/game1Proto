@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://7fyy34wic76v"]
+
+[ext_resource type="Script" uid="uid://bkgmab0p3ulme" path="res://core/FreeplayMenu/freeplay_menu.tscn.gd" id="1_ls10w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls10w"]
+bg_color = Color(0.31863582, 0.35677418, 0.3187199, 1)
+
+[node name="FreeplayMenu_tscn" type="Node2D" unique_id=1788428504]
+script = ExtResource("1_ls10w")
+
+[node name="BackButton" type="Button" parent="." unique_id=431789400]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 103.0
+offset_bottom = 47.0
+text = "Back"
+
+[node name="StartButton" type="Button" parent="." unique_id=1775054859]
+offset_left = 1019.0
+offset_top = 573.0
+offset_right = 1114.0
+offset_bottom = 613.0
+text = "Start"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1326977024]
+offset_left = 185.0
+offset_top = 126.0
+offset_right = 985.0
+offset_bottom = 526.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ls10w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=2065496009]
+layout_mode = 2
+
+[node name="CharacterBox" type="BoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1734739727]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/CharacterBox" unique_id=437502166]
+layout_mode = 2
+text = "Character"
+horizontal_alignment = 1
+
+[node name="DifficultyBox" type="BoxContainer" parent="PanelContainer/HBoxContainer" unique_id=84005966]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/DifficultyBox" unique_id=161786954]
+layout_mode = 2
+text = "Difficulty"
+horizontal_alignment = 1
+
+[node name="MapBox" type="BoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1780340790]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/MapBox" unique_id=1364654022]
+layout_mode = 2
+text = "Map"
+horizontal_alignment = 1
+
+[node name="OtherSettingsBox" type="BoxContainer" parent="PanelContainer/HBoxContainer" unique_id=2087138213]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer/OtherSettingsBox" unique_id=1430802734]
+layout_mode = 2
+text = "Modifiers"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

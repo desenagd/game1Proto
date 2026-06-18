@@ -34,22 +34,21 @@ func pick_spawn_position() -> Vector2:
 		return Vector2.INF
 	_path_follow.progress_ratio = randf()
 	return _path_follow.global_position
-	
-func _apply_difficulty( difficulty : String ) -> void:
+
+func _apply_difficulty( difficulty : Mission.MissionRank ) -> void:
 	match difficulty:
-		"EF1":
+		Mission.MissionRank.EF1:
 			mob_min = 5;   mob_max = 15
 			interval_min = 1.5; interval_max = 3.0
-		"EF2":
+		Mission.MissionRank.EF2:
 			mob_min = 15;  mob_max = 30
 			interval_min = 1.0; interval_max = 2.5
-		"EF3":
+		Mission.MissionRank.EF3:
 			mob_min = 30;  mob_max = 50
 			interval_min = 0.8; interval_max = 2.0
-		"EF4":
+		Mission.MissionRank.EF4:
 			mob_min = 50;  mob_max = 65
 			interval_min = 0.5; interval_max = 1.5
-		"EF5":
+		Mission.MissionRank.EF5:
 			mob_min = 65;  mob_max = 80
 			interval_min = 0.1; interval_max = 1.0
-			

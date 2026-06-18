@@ -18,7 +18,7 @@ func _ready() -> void:
 	cooldown = 0.3
 	damage = 35
 	cast_duration = 0.3
-	reach = 500
+	reach = 90
 
 func _on_hit( target ) -> void:
 	var effect = _hit_effect_scene.instantiate()

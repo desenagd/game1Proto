@@ -10,6 +10,7 @@ const SCENES: Dictionary = {
 	"options" : "res://core/options/options.tscn",
 	"records" : "res://core/Records/records.tscn",
 	"death_screen": "res://core/DeathScreen/death_screen.tscn",
+	"freeplay_menu": "res://core/FreeplayMenu/freeplay_menu.tscn"
 	
 	#"stage_01": "res://core/stage1/stage1.tscn",
 }
@@ -18,6 +19,9 @@ const CHARACTER_SCENES: Dictionary = {
 	"Bucky": "res://scenes/player/characters/bucky/Bucky.tscn",
 	"Yuri Shephard" : "res://scenes/player/characters/yuri_shephard/yuri_shephard.tscn"
 }
+
+# Need this in order to change mission data
+var mission_scene = preload( SCENES["mission"] )
 
 #------ SAVE SLOTS 1, 2, 3 are populated when player picks a file-------#
 var current_save_slot : int = -1
@@ -63,6 +67,12 @@ func go_to_main_menu() -> void:
 func go_to_save_file_select() -> void:
 	get_tree().change_scene_to_file( SCENES[ "save_file_select" ] )
 	
+func go_to_freeplay() -> void:
+	get_tree().change_scene_to_file( SCENES["freeplay_menu"] )
+	
+func start_freeplay_menu() -> void:
+	get_tree().change_scene_to_file( SCENES["freeplay_menu"] )
+	
 func new_save_slot( slot : int ) -> void:
 	current_save_slot = slot
 	get_tree().change_scene_to_file( SCENES["character_select"] )
@@ -73,14 +83,27 @@ func load_save_slot( slot : int ) -> void:
 	get_tree().change_scene_to_file( SCENES["castra_salus"] )
 	
 func confirm_character( character_id : String ) -> void:
-	run_state["selected_character"] = character_id
+	set_character(character_id)
 	#TODO - INITIALIZE AND WRITE NEW SAVE FILE TO DISK HERE
 	get_tree().change_scene_to_file( SCENES["castra_salus"] )
-	
-func go_on_mission() -> void:
+
+func set_character( character_id : String) -> void:
+	run_state["selected_character"] = character_id
+
+func go_on_mission(rank_key, map_key) -> void:
 	# TODO: mission selection logic goes here (random pick, difficulty, etc.)
-	get_tree().change_scene_to_file( SCENES["mission"] )
+	var mission_instance = mission_scene.instantiate()
+	#await get_tree().process_frame
+	var root = get_tree().root
+	var old_scene = get_tree().current_scene
 	
+	root.remove_child(old_scene)
+	root.add_child(mission_instance)
+	
+	mission_instance.instantiate_mission(rank_key, map_key)
+	get_tree().current_scene = mission_instance
+	old_scene.queue_free() # may or may not need this since this is singleton
+
 func back_to_castra_salus() -> void:
 	# TODO: This will may need to be changed to factor in save slot data
 	get_tree().change_scene_to_file( SCENES["castra_salus"] )

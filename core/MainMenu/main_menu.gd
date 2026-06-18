@@ -3,6 +3,9 @@ extends Control
 func _on_play_pressed() -> void:
 	GameManager.go_to_save_file_select()
 	
+func _on_freeplay_pressed() -> void:
+	GameManager.go_to_freeplay()
+	
 func _on_options_pressed() -> void:
 	GameManager.go_to_options()
 	

@@ -9,6 +9,6 @@ func _ready() -> void:
 	cooldown = 0
 	cast_duration = 0.2
 	
-	projectile_speed = 600.0
+	projectile_speed = 200.0
 	projectile_range = 200.0
 	await super._ready()
